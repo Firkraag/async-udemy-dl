@@ -30,7 +30,8 @@ You can download the latest version of async-udemy-dl by cloning the GitHub repo
 	git clone https://github.com/Firkraag/async-udemy-dl
 	
 ## ***Usage***
-This project uses cookies to authenticate with, so you must specify cookie file on commandline with option `-k cookies_file`. Please follow [Extracting Cookies / Request Headers]() to save udemy cookies to files before using this script.
+This project uses cookies to authenticate with, so you must specify cookie file on commandline with option `-k cookies_file`. 
+Please follow [Extracting Cookies / Request Headers](https://github.com/Firkraag/async-udemy-dl#extracting-cookies--request-headers) to save udemy cookies to files before using this script.
 
 ***Download a course***
 
@@ -80,7 +81,7 @@ This project uses cookies to authenticate with, so you must specify cookie file 
 ## **Advanced Usage**
 
 <pre><code>
-Author: Nasir khan (<a href="http://r0oth3x49.herokuapp.com/">r0ot h3x49</a>)
+Author: Firkraag (<a href="https://github.com/Firkraag/">Firkraag</a>)
 
 usage: async-udemy-dl.py [-h] [-v] -k cookie_file [-o] [-c] [-l]
                    [--chapter-start] [--chapter-end] [--lecture-start]

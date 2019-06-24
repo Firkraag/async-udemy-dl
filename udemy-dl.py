@@ -66,9 +66,9 @@ class UdemyCourse(object):
                                          chapter['object_index'], self, lectures)
             self.chapters.append(udemy_chapter)
 
-    async def download(self, session: aiohttp.ClientSession, chapter_start=None, chapter_end=None,
-                       lecture_start=None,
-                       lecture_end=None):
+    async def download(self, session: aiohttp.ClientSession, chapter_start: int = None,
+                       chapter_end: int = None, lecture_start: int = None,
+                       lecture_end: int = None) -> None:
         if chapter_start is None:
             chapter_start = 0
         else:
@@ -353,8 +353,7 @@ class UdemyStream(object):
                 else:
                     raise e
 
-        print(f"{self.asset.lecture.title} part{index1}{index2} reads {os.stat(
-            part_temp_path).st_size} bytes ")
+        print(f"{self.asset.lecture.title} part{index1}{index2} reads {os.stat(part_temp_path).st_size} bytes ")
 
 
 class UdemyCaption(object):
@@ -385,34 +384,40 @@ class UdemyCaption(object):
             try:
                 response = requests.get(self.url, headers=headers)
             except Exception as e:
-                e
+                pass
             else:
                 f.write(response.content)
 
 
-async def main(course_name, chapter_start=None, chapter_end=None, lecture_start=None,
-               lecture_end=None):
-    # logging.basicConfig('')
-    now = datetime.now()
-    print(f"download starts at {now.strftime('%H:%M:%S')}")
-    with open('cookies.txt') as f:
+async def main(course_name: str, chapter_start: int = None, chapter_end: int = None,
+               lecture_start: int = None, lecture_end: int = None) -> None:
+    """
 
+    :param course_name:
+    :param chapter_start:
+    :param chapter_end:
+    :param lecture_start:
+    :param lecture_end:
+    :return:
+    """
+    print(f"download starts at {datetime.now().strftime('%H:%M:%S')}")
+    with open('cookies.txt') as f:
         s = f.read()
-        cookies = [items.split("=", 1) for items in s.split(";")]
-        cookies = {key.strip(): value.strip() for key, value in cookies}
-        access_token = cookies['access_token']
-        HEADERS.update({
-            'Authorization': f'Bearer {access_token}',
-            'X-Udemy-Authorization': f'Bearer {access_token}',
-        })
-        response = requests.get(MY_COURSES_URL, headers=HEADERS)
-        courses = response.json()['results']
-        for course in courses:
-            if course['published_title'] == course_name:
-                udemy_course = UdemyCourse(course['id'], course['url'], course['published_title'])
-                async with aiohttp.ClientSession() as session:
-                    await udemy_course.download(session, chapter_start, chapter_end, lecture_start,
-                                                lecture_end)
+    cookies = [items.split("=", 1) for items in s.split(";")]
+    cookies = {key.strip(): value.strip() for key, value in cookies}
+    access_token = cookies['access_token']
+    HEADERS.update({
+        'Authorization': f'Bearer {access_token}',
+        'X-Udemy-Authorization': f'Bearer {access_token}',
+    })
+    response = requests.get(MY_COURSES_URL, headers=HEADERS)
+    courses = response.json()['results']
+    for course in courses:
+        if course['published_title'] == course_name:
+            udemy_course = UdemyCourse(course['id'], course['url'], course['published_title'])
+            async with aiohttp.ClientSession() as session:
+                await udemy_course.download(session, chapter_start, chapter_end, lecture_start,
+                                            lecture_end)
     print(f"download ends at {datetime.now().strftime('%H:%M:%S')}")
 
 
