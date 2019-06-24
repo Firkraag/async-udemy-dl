@@ -83,7 +83,7 @@ Please follow [Extracting Cookies / Request Headers](https://github.com/Firkraag
 <pre><code>
 Author: Firkraag (<a href="https://github.com/Firkraag/">Firkraag</a>)
 
-usage: async-udemy-dl.py [-h] [-v] -k cookie_file [-o] [-c] [-l]
+usage: async-udemy-dl.py [-h] [-v] -k cookie_file [-d] [-o] [-c] [-l]
                    [--chapter-start] [--chapter-end] [--lecture-start]
                    [--lecture-end] course
 
@@ -98,9 +98,10 @@ General:
   -v, --version     Shows the version.
 
 Authentication:
-  -k , --cookies    Cookies to authenticate with.
+  -k , --cookies cookies_file    Cookies to authenticate with.
 
 Advance:
+  -d, --debug       output debug info to screen
   -o , --output     Download to specific directory, if not specified, download to current directory.
   -c , --chapter    Download specific chapter from course.
   -l , --lecture    Download specific lecture from chapter(s).
