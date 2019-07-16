@@ -15,6 +15,14 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/Firkraag/async-udemy-dl",
     packages=setuptools.find_packages(),
+    py_modules=['async_udemy_dl'],
+    python_requires='>=3.7',
+    install_requires=['requests', 'aiohttp'],
+    entry_points = {
+        'console_scripts': [
+            'async-udemy-dl = async_udemy_dl:main',
+        ],
+    },
     classifiers=[
         "Programming Language :: Python :: 3.7",
         "License :: OSI Approved :: MIT License",
