@@ -77,7 +77,7 @@ Please follow [Extracting Cookies / Request Headers][2] to save udemy cookies to
  - Under that look for **Network Tab** and click on that. Under that **Network Tab** click on Requests type **XHR** .
  - Now click on **My Courses** in the Udemy navbar and refresh the page you will see some requests under **Network Tab**.
  - Right click on request links to **udemy.com/api-2.0/**. Simply copy **Request Headers** and save to text file.
- - The above guide is for ***Firefox*** users. ***Chrome**\* Users can follow [guide by @lamlephamngoc][3].
+ - The above guide is for ***Firefox*** users. ***Chrome*** Users can follow [guide by @lamlephamngoc][3].
 	 
  - Done run the async-udemy-dl against that text file it will start downloading the course.
 
