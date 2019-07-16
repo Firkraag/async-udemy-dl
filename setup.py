@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="async-udemy-dl",
-    version="0.1.0",
+    version="0.1.1",
     author="wq2",
     author_email="smilingwang2@gmail.com",
     description="simple script to asynchronously download udemy course",
@@ -18,7 +18,7 @@ setuptools.setup(
     py_modules=['async_udemy_dl'],
     python_requires='>=3.7',
     install_requires=['requests', 'aiohttp'],
-    entry_points = {
+    entry_points={
         'console_scripts': [
             'async-udemy-dl = async_udemy_dl:main',
         ],
