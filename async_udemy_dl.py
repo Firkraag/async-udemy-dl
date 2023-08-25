@@ -118,7 +118,7 @@ def get_udemy_course_info_by_course_name(course_name: str) -> Optional[UdemyInfo
     return None
 
 
-def argment_processing():
+def argument_processing():
     """
     command line argument processing
     :return:
@@ -546,7 +546,7 @@ async def entry() -> None:
     :return:
     """
     logging.info(f"Download starts")
-    args = argment_processing()
+    args = argument_processing()
     access_token = get_udemy_accss_token(args.cookies)
     HEADERS.update({
         'Authorization': f'Bearer {access_token}',
